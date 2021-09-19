@@ -1,0 +1,40 @@
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+    justify-content: center;
+    justify-self: center;
+}
+
+.game {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.balloon {
+    height: 50px;
+    width: 50px;
+    margin: 20px;
+    border-radius: 50%;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.black {
+    background-color: black;
+}
+
+.pink {
+    background-color: pink;
+}

@@ -1,1 +1,1 @@
-# balloonGame
+# javascript-balloon-popping-project
