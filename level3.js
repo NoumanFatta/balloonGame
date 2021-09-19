@@ -14,7 +14,7 @@ firebase.auth().onAuthStateChanged((user) => {
 
     if (user) {
         db.collection("users").doc(user.uid).get().then((doc) => {
-            if (doc.data().lastLevel == 'level2') {
+            if (doc.data().lastLevel == 'level3') {
 
                 document.body.style.display = "block";
                 let popped = 0;
@@ -45,15 +45,7 @@ firebase.auth().onAuthStateChanged((user) => {
                         const lifeHeading = document.getElementById("lifeHeading");
                         gallery.innerHTML = '';
                         message.style.display = 'block';
-                        db.collection("users").doc(user.uid).update({
-                            lastLevel: "level3"
-                        })
-                            .then(() => {
-                                location.href = "level3.html"
-                            })
-                            .catch((error) => {
-                                console.error("Error writing document: ", error);
-                            });
+                        
                     }
                 };
                 const gameOver = () => {
@@ -67,7 +59,6 @@ firebase.auth().onAuthStateChanged((user) => {
                             location.reload()
                         }, 1000);
                     }
-
                 }
             }
             else {

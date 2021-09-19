@@ -74,9 +74,6 @@ firebase.auth().onAuthStateChanged((user) => {
                             .catch((error) => {
                                 console.error("Error writing document: ", error);
                             });
-                        setTimeout(() => {
-
-                        }, 1000);
                     }
                 };
                 const gameOver = () => {
