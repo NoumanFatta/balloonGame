@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="level1.css">
+</head>
+
+<body>
+    <div>
+        <input type="button" value="Log Out" onclick="logout()">
+    </div>
+    <div class="wrapper">
+        <h1 id="greetUser"></h1>
+        <h1 id="popmsg">Pop the balloons by moving</br>your mouse over them</h1>
+        <div id="yay-no-balloons"><span class="blue">Wow!</span> First LEVEL CLEARED!</div>
+        <h1 id="lifeHeading"> Lives: <span id="lives"></span> </h1>
+        <div id="game-over">Game Over</div>
+        <div id="balloon-gallery">
+
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script src="level1.js"></script>
+</body>
+
+</html>

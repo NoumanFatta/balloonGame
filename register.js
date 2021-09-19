@@ -15,9 +15,18 @@ var database = firebase.database();
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      location.href = "level3.html"
+        db.collection("users").doc(user.uid).get().then((doc) => {
+            if (doc.exists) {
+                location.href = `${(doc.data().lastLevel)}.html`;
+            }
+        }).catch((error) => {
+            alert(error);
+        });
     }
-  });
+    else {
+        document.body.style.display = "block";
+    }
+});
 
 
 const signUp = () => {
@@ -25,7 +34,12 @@ const signUp = () => {
     const password = document.getElementById("password").value;
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            alert("Sign Up")
+            alert("Sign Up");
+            db.collection("users").doc(userCredential.user.uid).set({
+                email: email,
+                lastLogin: new Date(),
+                lastLevel: "level1"
+            })
         })
         .catch((error) => {
             var errorMessage = error.message;
@@ -38,7 +52,23 @@ const signIn = () => {
     const password = document.getElementById("password").value;
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            location.href = "level3.html"
+            // Add a new document in collection "cities"
+            db.collection("users").doc(userCredential.user.uid).update({
+                email: email,
+                lastLogin: new Date()
+            })
+                .then(() => {
+                    db.collection("users").doc(userCredential.user.uid).get().then((doc) => {
+                        if (doc.exists) {
+                            location.href = `${(doc.data().lastLevel)}.html`;
+                        }
+                    }).catch((error) => {
+                        alert(error);
+                    });
+                })
+                .catch((error) => {
+                    alert(error);
+                });
         })
         .catch((error) => {
             var errorMessage = error.message;
